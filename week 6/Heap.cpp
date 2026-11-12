@@ -37,19 +37,19 @@ void deleteRoot(int arr[], int& n) {
 
 // 3b. Ham Xoa mot gia tri bat ky trong Max-Heap
 void deleteValue(int arr[], int& n, int val) {
-    int idx = searchHeap(arr, n, val);
-    if (idx == -1) return; // Khong tim thay gia tri can xoa
+    int i = searchHeap(arr, n, val);
+    if (i == -1) return; // Khong tim thay gia tri can xoa
 
-    arr[idx] = arr[n - 1]; // Ghi de bang phan tu cuoi mang
+    arr[i] = arr[n - 1]; // Ghi de bang phan tu cuoi mang
     n--;                   // Giam kich thuoc heap
 
-    if (idx == n) return;  // Neu xoa dung phan tu cuoi cung thi dung luon
+    if (i == n) return;  // Neu xoa dung phan tu cuoi cung thi dung luon
 
-    // Can bang lai heap tai vi tri idx (day len neu lon hon cha, nguoc lai day xuong)
-    int parent = (idx - 1) / 2;
-    if (idx > 0 && arr[idx] > arr[parent]) {
-        heapifyUp(arr, idx);
+    // Can bang lai heap tai vi tri i (day len neu lon hon cha, nguoc lai day xuong)
+    int parent = (i - 1) / 2;
+    if (i > 0 && arr[i] > arr[parent]) {
+        heapifyUp(arr, i);
     } else {
-        heapify(arr, n, idx);
+        heapify(arr, n, i);
     }
 }
